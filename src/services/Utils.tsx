@@ -47,17 +47,17 @@ export const supportedSubjects:any = {
 
 
 /*=================================Offline Protocol settings==============================*/
-// export const SOCKET_PROTOCOL = "ws";
-// export const HTTP_PROTOCOL = "http";
-// export const APP_LOCAL_DOMAIN = "localhost:3000";
-// export const APP_AUTH_DOMAIN = APP_LOCAL_DOMAIN;
-// export const APP_VIDEOS_DOMAIN = APP_LOCAL_DOMAIN;
+export const SOCKET_PROTOCOL = "ws";
+export const HTTP_PROTOCOL = "http";
+export const APP_LOCAL_DOMAIN = "localhost:3000";
+export const APP_AUTH_DOMAIN = APP_LOCAL_DOMAIN;
+export const APP_VIDEOS_DOMAIN = APP_LOCAL_DOMAIN;
 /*=================================Online Protocol settings==============================*/
-export const SOCKET_PROTOCOL = "wss";
-export const HTTP_PROTOCOL = "https";
-export const APP_LOCAL_DOMAIN = "appimate.com";
-export const APP_AUTH_DOMAIN = "appimate.com";
-export const APP_VIDEOS_DOMAIN = "appimate.com";
+// export const SOCKET_PROTOCOL = "wss";
+// export const HTTP_PROTOCOL = "https";
+// export const APP_LOCAL_DOMAIN = "appimate.com";
+// export const APP_AUTH_DOMAIN = "appimate.com";
+// export const APP_VIDEOS_DOMAIN = "appimate.com";
 
 
 export const currentWebSocketDomain = (path: any) => `${SOCKET_PROTOCOL}://${APP_LOCAL_DOMAIN}/${path}`;

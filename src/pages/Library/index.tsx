@@ -15,46 +15,46 @@ const Library:React.FC<any> = ({doPlay})=>{
 
 
     var presentTrends:any = [
-        {
-            type: 'bar', 
-            labels: ['2022', '2023', '2024', '2025', '2026', '2027', '2028'], 
-            datasets: [
-                {label: "Data Capturer", data: [3, 6, 11, 9, 15, 19, 21], backgroundColor: 'rgba(54, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Data Engineering", data: [3, 7, 11, 9, 15, 9, 21], backgroundColor: 'rgba(54, 16, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Software development", data: [3, 9, 11, 9, 15, 19, 21], backgroundColor: 'rgba(54, 162, 25, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Machine Learning", data: [3, 7, 11, 9, 35, 19, 21], backgroundColor: 'rgba(54, 162, 185, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Data Modelling", data: [3, 11, 11, 9, 15, 19, 21], backgroundColor: 'rgba(254, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-            ],
-            scale: {yAxes: {ticks: {beginAtZero: true}}}
-        },
-        {
-            type: 'pie', 
-            labels: ['Data Capturer', 'Data Engineering', 'Software development', 'Machine Learning', 'Machine Learning', 'Data Modelling'], 
-            datasets: [
-                {label: "Requests", data: [1, 5, 3, 7, 8], backgroundColor: ['rgba(54, 162, 235, 0.99)', 'rgba(54, 16, 235, 0.99)', 'rgba(54, 162, 25, 0.99)', 'rgba(54, 162, 185, 0.99)', 'rgba(254, 162, 235, 0.99)']}, 
-            ]
-        },
-    ];;
+        // {
+        //     type: 'bar', 
+        //     labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022'], 
+        //     datasets: [
+        //         {label: "Data Capturer", data: [3, 6, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Data Engineering", data: [3, 7, 11, 9, 15, 9, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 16, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Software development", data: [3, 9, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 25, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Machine Learning", data: [3, 7, 11, 9, 35, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 185, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Data Modelling", data: [3, 11, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(254, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //     ],
+        //     scale: {yAxes: {ticks: {beginAtZero: true}}}
+        // },
+        // {
+        //     type: 'pie', 
+        //     labels: ['Data Capturer', 'Data Engineering', 'Software development', 'Machine Learning', 'Machine Learning', 'Data Modelling'], 
+        //     datasets: [
+        //         {label: "Requests", data: [1, 5, 3, 7, 8], backgroundColor: ['rgba(54, 162, 235, 0.99)', 'rgba(54, 16, 235, 0.99)', 'rgba(54, 162, 25, 0.99)', 'rgba(54, 162, 185, 0.99)', 'rgba(254, 162, 235, 0.99)']}, 
+        //     ]
+        // },
+    ];
     var futureTrends:any = [
-        {
-            type: 'line', 
-            labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022'], 
-            datasets: [
-                {label: "Data Capturer", data: [3, 6, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Data Engineering", data: [3, 7, 11, 9, 15, 9, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 16, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Software development", data: [3, 9, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 25, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Machine Learning", data: [3, 7, 11, 9, 35, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 185, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-                {label: "Data Modelling", data: [3, 11, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(254, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
-            ],
-            scale: {yAxes: {ticks: {beginAtZero: true}}}
-        },
-        {
-            type: 'doughnut', 
-            labels: ['Data Capturer', 'Data Engineering', 'Software development', 'Machine Learning', 'Machine Learning', 'Data Modelling'], 
-            datasets: [
-                {label: "Requests", data: [1, 5, 3, 7, 8], backgroundColor: ['rgba(54, 162, 235, 0.99)', 'rgba(54, 16, 235, 0.99)', 'rgba(54, 162, 25, 0.99)', 'rgba(54, 162, 185, 0.99)', 'rgba(254, 162, 235, 0.99)']}, 
-            ]
-        },
+        // {
+        //     type: 'line', 
+        //     labels: ['2022', '2023', '2024', '2025', '2026', '2027', '2028'], 
+        //     datasets: [
+        //         {label: "Data Capturer", data: [3, 6, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Data Engineering", data: [3, 7, 11, 9, 15, 9, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 16, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Software development", data: [3, 9, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 25, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Machine Learning", data: [3, 7, 11, 9, 35, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(54, 162, 185, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //         {label: "Data Modelling", data: [3, 11, 11, 9, 15, 19, 21], cubicInterpolationMode: 'monotone', backgroundColor: 'rgba(254, 162, 235, 0.99)', borderColor: 'rgba(255, 99, 132, 0.9)'},
+        //     ],
+        //     scale: {yAxes: {ticks: {beginAtZero: true}}}
+        // },
+        // {
+        //     type: 'doughnut', 
+        //     labels: ['Data Capturer', 'Data Engineering', 'Software development', 'Machine Learning', 'Machine Learning', 'Data Modelling'], 
+        //     datasets: [
+        //         {label: "Requests", data: [1, 5, 3, 7, 8], backgroundColor: ['rgba(54, 162, 235, 0.99)', 'rgba(54, 16, 235, 0.99)', 'rgba(54, 162, 25, 0.99)', 'rgba(54, 162, 185, 0.99)', 'rgba(254, 162, 235, 0.99)']}, 
+        //     ]
+        // },
     ];
 
 
@@ -70,6 +70,7 @@ const Library:React.FC<any> = ({doPlay})=>{
 
     const onSegment = (seg: any)=>{
         setSegment(seg);
+        pushData(()=>{}, segment);
     };
     const doPlayFunction = (trend: any, localTrends: any)=>{
         // history.push('/watch?vid='+video.id);
@@ -104,19 +105,27 @@ const Library:React.FC<any> = ({doPlay})=>{
             setSearchedContent(testUsers);
         }
     }
-    const pushData = (callback: Function, direction: number) => {
+    const pushData = (callback: Function, segment: string) => {
         var requestObj = {
             method: "GET", 
-            url: appAuthDomain('api/insights?appType=videos'), 
-            data: {
-                // fetching: 1, 
-                // lastNotifyID, 
-                direction,
-            }
+            url: appAuthDomain(`api/insights?appType=videos&action=get${capitalize(segment)}`), 
         };
         makeRequests(state, requestObj).then(response=>{
             callback();
             console.log(response);
+            if (response.success) {
+                var newLocalTrends = {
+                    ...localTrends,
+                    futureTrends,
+                    presentTrends,
+                }
+                setLocalTrends({
+                    ...localTrends,
+                    [segment+"Trends"]: response.data,
+                })
+            } else {
+                
+            }
         })
     }
     
@@ -126,7 +135,6 @@ const Library:React.FC<any> = ({doPlay})=>{
             localTrendsPulled = JSON.parse(localTrendsPulled);
             if (localTrendsPulled['presentTrends']) {
                 presentTrends = localTrendsPulled.presentTrends;
-                dispatch(setRecentVideos(presentTrends));
             };
             if (localTrendsPulled['futureTrends']) {
                 futureTrends = localTrendsPulled.futureTrends;
@@ -138,11 +146,10 @@ const Library:React.FC<any> = ({doPlay})=>{
             }
             setLocalTrends(newLocalTrends)
 
-            if ((newLocalTrends.presentTrends.length < 1)||(newLocalTrends.futureTrends.length < 1)) {
-                pushData(()=>{}, -1);
+            if ((newLocalTrends.presentTrends.length < 3)||(newLocalTrends.futureTrends.length < 3)) {
+                pushData(()=>{}, segment);
             }
         });
-        
     });
     
     useEffect(()=>{
@@ -174,9 +181,6 @@ const Library:React.FC<any> = ({doPlay})=>{
                     (!searchFocused && (searchText.length < 1))?(
                         <>
                         <IonSegment mode='ios' value={segment} onIonChange={e => onSegment(e.detail.value!)} disabled={segDisable}>
-                            {/* <IonSegmentButton value="past">
-                                <IonLabel>Past </IonLabel>
-                            </IonSegmentButton> */}
                             <IonSegmentButton value="present">
                                 <IonLabel>Present</IonLabel>
                             </IonSegmentButton>

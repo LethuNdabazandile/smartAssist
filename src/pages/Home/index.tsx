@@ -52,13 +52,13 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const [loadedVideos, setLoadedVideos] = useState<any>(loaders);
     const [careerMSG, setCareerMSG] = useState<any>("");
     const [selectedSubject, setSelectedSubject] = useState<any>("All");
-    const [dataSets, setDataSets] = useState({type: 'line', labels: ['2019', '2020', '2021', '2022'], datasets: [
-        {label: "Data scientists", data: [10, 15, 22, 30], cubicInterpolationMode:'monotone', borderColor:"blue", backgroundColor: 'blue'},
-        {label: "Engeneers", data: [12, 7, 24, 27], cubicInterpolationMode:'monotone', borderColor:"Yellow", backgroundColor: 'yellow'}, 
-        {label: "Software developer", data: [1, 29, 32, 34], cubicInterpolationMode:'monotone', borderColor:"rgba(255, 99, 132, 0.9)", backgroundColor: 'rgba(255, 99, 132, 0.9)'}, 
-        {label: "Computer scientists", data: [5, 24, 25, 35], cubicInterpolationMode:'monotone', borderColor:"lightBlue", backgroundColor: 'lightBlue'}, 
-        {label: "Marketing", data: [24, 20, 16, 12], cubicInterpolationMode:'monotone', borderColor:"orange", backgroundColor: 'orange'}, 
-    ]})
+    // const [dataSets, setDataSets] = useState({type: 'line', labels: ['2019', '2020', '2021', '2022'], datasets: [
+    //     {label: "Data scientists", data: [10, 15, 22, 30], cubicInterpolationMode:'monotone', borderColor:"blue", backgroundColor: 'blue'},
+    //     {label: "Engeneers", data: [12, 7, 24, 27], cubicInterpolationMode:'monotone', borderColor:"Yellow", backgroundColor: 'yellow'}, 
+    //     {label: "Software developer", data: [1, 29, 32, 34], cubicInterpolationMode:'monotone', borderColor:"rgba(255, 99, 132, 0.9)", backgroundColor: 'rgba(255, 99, 132, 0.9)'}, 
+    //     {label: "Computer scientists", data: [5, 24, 25, 35], cubicInterpolationMode:'monotone', borderColor:"lightBlue", backgroundColor: 'lightBlue'}, 
+    //     {label: "Marketing", data: [24, 20, 16, 12], cubicInterpolationMode:'monotone', borderColor:"orange", backgroundColor: 'orange'}, 
+    // ]})
     const [showLoadingState, setShowLoading] = useState({showLoadingMessage: "Loading ...", showLoading: false, triggered: false});
     const [showAlertState, setShowAlertState] = useState<ShowAlertInterface>({header: "Alert", subHeader: "If this takes too long, just close tha App and start afresh.", message: "", buttons: [], showAlert: false});
 
@@ -242,7 +242,7 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const slideOpts = {
         initialSlide: 0,
         // speed: 0.2,
-        speed: 400, slidesPerView: 1, autoplay: {delay: 2500}
+        speed: 400, slidesPerView: 1.1, autoplay: {delay: 2500}
     };
     const chooseVehicleDriver = (val: any)=>{
         // console.log(val);
@@ -279,6 +279,7 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
         }, 500);
     }
 
+    console.log(state.user.homeData.statsUpdate)
     return (
         <IonPage>
             <IonHeader mode='ios'>
@@ -305,30 +306,32 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                     <div className='welcomeSection'>
                     <IonSlides pager={true} options={slideOpts}>
                         <IonSlide>
-                            <IonCard className="topSliderCard" >
-                                <IonImg src="assets/img/Appimate Platform - Graphic (no background).png"/>
+                            <IonCard className="topSliderCard" button>
+                                <IonImg src="assets/img/maxresdefault.jpg"/>
                             </IonCard>
                         </IonSlide>
                         <IonSlide>
-                            <IonCard className="topSliderCard" >
-                                <IonImg src="assets/img/Appimate Platform - Graphic (no background).png"/>
+                            <IonCard className="topSliderCard" button>
+                                <IonImg src="assets/img/office-stationary-supplies-500x500.png"/>
                             </IonCard>
                         </IonSlide>
                         <IonSlide>
-                            <IonCard className="topSliderCard" >
-                                <IonImg src="assets/img/Appimate Platform - Graphic (no background).png"/>
+                            <IonCard className="topSliderCard" button>
+                                <IonImg src="assets/img/ad7.jpg"/>
                             </IonCard>
                         </IonSlide>
                     </IonSlides>
                     </div>
                     <div>
-                        <IonCard>
-                            <Charts data={dataSets} />
+                        <IonCard routerLink='/library' button>
+                            {
+                                (state.user.homeData.statsUpdate)?(
+                                    <Charts data={(state.user.homeData.statsUpdate.futureTrends)?(state.user.homeData.statsUpdate.futureTrends):([])} />
+                                ):("")
+                            }
                         </IonCard>
                     </div>
-                    {/* <IonFab className='' style={{border:'1px solid red'}} > */}
-                        <IonButton mode='ios' expand="block" className='' onClick={() => setIsOpen(true)}>Career guider</IonButton>
-                    {/* </IonFab> */}
+                    <IonButton mode='ios' expand="block" className='' onClick={() => setIsOpen(true)}>Career guider</IonButton>
                 </div>
                 <br/>
                 <br/><br/>
