@@ -15,7 +15,7 @@
     height: 160px;
     border-radius: 25px;
 }
-
+.topSliderCard{ width: 100%; height: 170px; }
 .homeTopSection{
     /* border: 1px solid blue; */
     height: 300px;

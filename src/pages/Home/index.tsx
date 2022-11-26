@@ -1,10 +1,18 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 
-import { IonAlert, IonBadge, IonButton, IonCard, IonCardTitle, IonContent, IonFab, IonHeader, IonIcon, 
+import { IonAlert, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, 
+    IonImg, 
+    IonItem, 
+    IonLabel, 
+    IonModal, 
     IonPage, IonRefresher, IonRefresherContent, 
+    IonSelect, 
+    IonSelectOption, 
+    IonSlide, 
+    IonSlides, 
     IonTitle, IonToolbar, RefresherEventDetail, useIonViewWillEnter 
 } from '@ionic/react';
-import { arrowForward, checkmarkCircle, chevronDownCircleOutline, create, reload, trophy } from 'ionicons/icons';
+import { arrowForward, chevronDownCircleOutline, reload } from 'ionicons/icons';
 import 'swiper/css';
 import 'swiper/css/zoom';
 
@@ -16,11 +24,14 @@ import { appAuthDomain, dateTimeNow, getTimeOfDay, makeRequests, ShowAlertInterf
 import VideosList from '../../components/VideosList';
 import './index.css';
 import { useLocation } from 'react-router';
+import Charts from '../../components/Charts';
 
 const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const { state, dispatch } = useContext(AppContext);
     const socket = useSocket();
-
+    const [isOpen, setIsOpen] = useState(false);
+    const [myColor, setMyColor] = useState("")
+    const [choseIsHasDriver, seChoseIsHasDriver] = useState()
     const getDateTimeObject = getTimeOfDay(new Date());
     var loaders = [
         {
@@ -39,7 +50,15 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const { search } = useLocation();
     const [isLoading, setIsLoading] = useState(false);
     const [loadedVideos, setLoadedVideos] = useState<any>(loaders);
+    const [careerMSG, setCareerMSG] = useState<any>("");
     const [selectedSubject, setSelectedSubject] = useState<any>("All");
+    const [dataSets, setDataSets] = useState({type: 'line', labels: ['2019', '2020', '2021', '2022'], datasets: [
+        {label: "Data scientists", data: [10, 15, 22, 30], cubicInterpolationMode:'monotone', borderColor:"blue", backgroundColor: 'blue'},
+        {label: "Engeneers", data: [12, 7, 24, 27], cubicInterpolationMode:'monotone', borderColor:"Yellow", backgroundColor: 'yellow'}, 
+        {label: "Software developer", data: [1, 29, 32, 34], cubicInterpolationMode:'monotone', borderColor:"rgba(255, 99, 132, 0.9)", backgroundColor: 'rgba(255, 99, 132, 0.9)'}, 
+        {label: "Computer scientists", data: [5, 24, 25, 35], cubicInterpolationMode:'monotone', borderColor:"lightBlue", backgroundColor: 'lightBlue'}, 
+        {label: "Marketing", data: [24, 20, 16, 12], cubicInterpolationMode:'monotone', borderColor:"orange", backgroundColor: 'orange'}, 
+    ]})
     const [showLoadingState, setShowLoading] = useState({showLoadingMessage: "Loading ...", showLoading: false, triggered: false});
     const [showAlertState, setShowAlertState] = useState<ShowAlertInterface>({header: "Alert", subHeader: "If this takes too long, just close tha App and start afresh.", message: "", buttons: [], showAlert: false});
 
@@ -220,17 +239,57 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
         }
     });
 
+    const slideOpts = {
+        initialSlide: 0,
+        // speed: 0.2,
+        speed: 400, slidesPerView: 1, autoplay: {delay: 2500}
+    };
+    const chooseVehicleDriver = (val: any)=>{
+        // console.log(val);
+        seChoseIsHasDriver(val);
+    }
+    const submitFunction = (e: any, optionalValues: any)=>{
+        setShowLoading({...showLoadingState, showLoadingMessage: "Checking data...", showLoading: true, triggered: true});
+        e.preventDefault();
+        e.stopPropagation();
+        var formData = new FormData(e.target);
+        var requestObject = Object.fromEntries(formData.entries());
+        console.log(requestObject.age);
+        var mgsResults = '';
+        setMyColor('green')
+        if(requestObject.field === 'science'){
+            mgsResults = 'You stand a chance of getting a job, the skills in your feild are in high demand.';
+        }else if (requestObject.field === 'commerce'){
+            setMyColor('orange')
+            mgsResults = 'You stand a chance of getting a job, but the skills in your feild are not in hight demand.';
+        }else if(requestObject.field === 'General' || requestObject.field === 'Others'){
+            setMyColor('red')
+            mgsResults = 'Your chances of getting a job are slim, the skills in your feild are not in demand, ';
+            if(requestObject.field === 'General' && requestObject.in_grade !== "12"){
+                mgsResults += " You should consider changing your subjects."
+            }else if(requestObject.field === 'Others'){
+                mgsResults += " You should consider changing your course, most fields for in this category are not in demand."  
+            }
+        }else if (requestObject.field === 'IT'){
+            mgsResults = 'You stand a good chance of getting a job, skills in your feild are in high demand.';
+        }
+        setTimeout(() => {
+            setCareerMSG(mgsResults)
+            setShowLoading({...showLoadingState, showLoading: false});
+        }, 500);
+    }
+
     return (
         <IonPage>
             <IonHeader mode='ios'>
                 <IonToolbar>
-                    <IonTitle>Appimate</IonTitle>
+                    <IonTitle>Smart Assist</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader collapse="condense" mode='ios'>
                     <IonToolbar>
-                        <IonTitle size="large">Appimate</IonTitle>
+                        <IonTitle size="large">Smart Assist</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 {/* <IonSearchbar mode='ios' /> */}
@@ -244,74 +303,41 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                 </IonRefresher>
                 <div className='homeTopSection'>
                     <div className='welcomeSection'>
-                        <IonCard className='homeAvgPerformance' routerLink='/quiz' mode='ios'>
-                            <div  style={{float:"left", width: "70%"}}>
-                                <IonCardTitle className='homeWelcomeText'>
-                                    <span className={'onlineState onlineState'+state.socketConnection} ></span>
-                                    {
-                                        (state.auth.user)?(
-                                            "Good "+getDateTimeObject.name+" "+state.auth.user.firstname
-                                        ):(
-                                            "Good "+getDateTimeObject.name
-                                        )
-                                    }
-                                </IonCardTitle>
-                                <p className={'homeMesgext'}>
-                                    {
-                                        (state.user.homeData)?(
-                                            <>
-                                            {(state.user.homeData.message)?(state.user.homeData.message):("My current progress")}
-                                            </>
-                                        ):(
-                                            "My current progress"
-                                        )
-                                    }
-                                </p>
-                            </div>
-                            <div className={'scoreDiv'} style={{float:"left", width: "25%"}}>
-                                <IonIcon icon={checkmarkCircle} className="scoreIcon"/>
-                                <p className={'scoreText'}>
-                                    {
-                                        (state.user.homeData)?(
-                                            <>
-                                            {(state.user.homeData.points)?(state.user.homeData.points):("0")}
-                                            </>
-                                        ):(
-                                            "0"
-                                        )
-                                    }
-                                </p>
-                            </div>
+                    <IonSlides pager={true} options={slideOpts}>
+                        <IonSlide>
+                            <IonCard className="topSliderCard" >
+                                <IonImg src="assets/img/Appimate Platform - Graphic (no background).png"/>
+                            </IonCard>
+                        </IonSlide>
+                        <IonSlide>
+                            <IonCard className="topSliderCard" >
+                                <IonImg src="assets/img/Appimate Platform - Graphic (no background).png"/>
+                            </IonCard>
+                        </IonSlide>
+                        <IonSlide>
+                            <IonCard className="topSliderCard" >
+                                <IonImg src="assets/img/Appimate Platform - Graphic (no background).png"/>
+                            </IonCard>
+                        </IonSlide>
+                    </IonSlides>
+                    </div>
+                    <div>
+                        <IonCard>
+                            <Charts data={dataSets} />
                         </IonCard>
                     </div>
-                    <div className='quizRelatedInfo'>
-                        <div >
-                            <IonCard  className="homeGridCol2" routerLink="/quiz">
-                                {
-                                    (state.user.homeData.activities>0)?(
-                                    <IonBadge color="danger" style={{right: "5%", position: "absolute", zIndex: 1000}}>
-                                        {
-                                            (state.user.homeData.activities > 99)?(
-                                                `${state.user.homeData.activities}+`
-                                            ):(
-                                                state.user.homeData.activities
-                                            )
-                                        }
-                                    </IonBadge>
-                                    ):("")
-                                }
-                                <IonIcon icon={create} className="gridIcons"/>
-                                <IonCardTitle className='gridTitle'>Quiz</IonCardTitle>
-                            </IonCard>
-                        </div>
-                        <div >
-                            <IonCard className="homeGridCol2" routerLink='/leaderboard'>
-                                <IonIcon icon={trophy} className="gridIcons"/>
-                                <IonCardTitle className='gridTitle'>Leaderboard</IonCardTitle>
-                            </IonCard>
-                        </div>
-                    </div>
+                    {/* <IonFab className='' style={{border:'1px solid red'}} > */}
+                        <IonButton mode='ios' expand="block" className='' onClick={() => setIsOpen(true)}>Career guider</IonButton>
+                    {/* </IonFab> */}
                 </div>
+                <br/>
+                <br/><br/>
+                <br/><br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <div className='subjectsSliderContainer'>
                     {
                         mySubjects.map((subject: any, key: number)=>{
@@ -352,9 +378,110 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                 <br/>
                 <br/>
             </IonContent>
-            <IonFab className='requestBtnFab' >
+            {/* <IonFab className='requestBtnFab' >
                 <IonButton mode='ios' className='requestBtn' onClick={enterRequestMode}>Request</IonButton>
-            </IonFab>
+            </IonFab> */}
+            <IonModal 
+            mode='ios'
+            ref={routerRef}
+            presentingElement= {routerRef.current}
+            swipeToClose={true}
+            isOpen={isOpen}>
+                <IonHeader>
+                    <IonToolbar>
+                    <IonTitle>Career guider</IonTitle>
+                    <IonButtons slot="end">
+                        <IonButton onClick={() => setIsOpen(false)}>Close</IonButton>
+                    </IonButtons>
+                    </IonToolbar>
+                </IonHeader>
+                <IonContent className="ion-padding">
+                    <form onSubmit={(evt)=>{submitFunction(evt, null)}}>
+                    <IonItem className="myFormInputs">
+                        <IonLabel position="floating" >Your age</IonLabel>
+                        <IonSelect 
+                            interface="action-sheet"
+                            placeholder="Select one"
+                            name='age'
+                            aria-required>
+                             <IonSelectOption value="20" >13-20 years</IonSelectOption>
+                             <IonSelectOption value="25" >20-25 years</IonSelectOption>
+                             <IonSelectOption value="30" >25-30 years</IonSelectOption>
+                        </IonSelect>
+                    </IonItem>
+                    <IonItem className="myFormInputs">
+                        <IonLabel position="floating" >School level</IonLabel>
+                        <IonSelect 
+                            interface="action-sheet"
+                            placeholder="Select one"
+                            name='in_level'
+                            onIonChange={(e)=>chooseVehicleDriver(e.detail.value)}
+                            aria-required>
+                             <IonSelectOption value="highSchool" >High school</IonSelectOption>
+                             <IonSelectOption value="Varsity" >University</IonSelectOption>
+                             <IonSelectOption value="college" >College</IonSelectOption>
+                        </IonSelect>
+                    </IonItem>
+                    {
+                        (choseIsHasDriver === 'highSchool')?(
+                            <>
+                            <IonItem className="myFormInputs">
+                                <IonLabel position="floating" >Grade</IonLabel>
+                                <IonSelect 
+                                    interface="action-sheet"
+                                    placeholder="Select one"
+                                    name='in_grade'
+                                    // onIonChange={(e)=>chooseVehicleDriver(e.detail.value)}
+                                    aria-required>
+                                    <IonSelectOption value="10" >Grade 10</IonSelectOption>
+                                    <IonSelectOption value="11" >Grade 11</IonSelectOption>
+                                    <IonSelectOption value="12" >Grade 12</IonSelectOption>
+                                </IonSelect>
+                            </IonItem>
+                            <IonItem className="myFormInputs">
+                                <IonLabel position="floating" >School subjects</IonLabel>
+                                <IonSelect 
+                                    interface="action-sheet"
+                                    placeholder="Select one"
+                                    name='field'
+                                    // onIonChange={(e)=>chooseVehicleDriver(e.detail.value)}
+                                    aria-required>
+                                    <IonSelectOption value="science" >Science (Physics, Maths, life science & others)</IonSelectOption>
+                                    <IonSelectOption value="commerce" >Commerce (Account, Maths, Business studies  & others)</IonSelectOption>
+                                    <IonSelectOption value="General" >General (History, Maths lit & others)</IonSelectOption>
+                                </IonSelect>
+                            </IonItem>
+                            </>
+                        ):(
+                            <IonItem className="myFormInputs">
+                                <IonLabel position="floating" >Field</IonLabel>
+                                <IonSelect 
+                                    interface="action-sheet"
+                                    placeholder="Select one"
+                                    name='field'
+                                    // onIonChange={(e)=>chooseVehicleDriver(e.detail.value)}
+                                    aria-required>
+                                    <IonSelectOption value="science" >Science (Engeneering, Mechanical, Chemical and others)</IonSelectOption>
+                                    <IonSelectOption value="commerce" >Commerce</IonSelectOption>
+                                    <IonSelectOption value="IT" >Computer science (IT, IS and others)</IonSelectOption>
+                                    <IonSelectOption value="Others" >Others</IonSelectOption>
+                                </IonSelect>
+                            </IonItem>
+                        )
+                    }
+                        <IonButton mode='ios' expand="block" className='' type='submit'>Submit</IonButton>
+                    
+                    </form>
+                    {
+                        (careerMSG !=="")?(
+                        <IonCard>
+                            <p style={{color: myColor}}>{careerMSG}</p>
+                        </IonCard>
+                        ):("")
+                    }
+                    
+                </IonContent>
+            </IonModal>
             <IonAlert
                 mode='ios'
                 isOpen={showAlertState.showAlert}
