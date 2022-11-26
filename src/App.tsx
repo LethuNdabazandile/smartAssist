@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonBadge, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
-import { albums, chatbubbles, home, menu, notifications } from 'ionicons/icons';
+import { barChart, chatbubbles, home, menu, notifications } from 'ionicons/icons';
 import { IonReactRouter } from '@ionic/react-router';
 // import { SplashScreen } from '@capacitor/splash-screen';
 
@@ -313,8 +313,8 @@ const App: React.FC = () => {
                   <IonLabel>Home</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="library" href="/library">
-                  <IonIcon icon={albums} mode='ios'/>
-                  <IonLabel>My Library</IonLabel>
+                  <IonIcon icon={barChart} mode='ios'/>
+                  <IonLabel>Insights</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="chats" href="/chats">
                   {
@@ -329,7 +329,7 @@ const App: React.FC = () => {
                     ):("")
                   }
                   <IonIcon icon={chatbubbles} mode='ios'/>
-                  <IonLabel>Chats</IonLabel>
+                  <IonLabel>Applications</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="notifications" href="/notifications">
                   {

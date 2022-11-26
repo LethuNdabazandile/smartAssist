@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 
-import { IonAlert, IonBadge, IonButton, IonCard, IonCardTitle, IonContent, IonFab, IonHeader, IonIcon, 
+import { IonAlert, IonBadge, IonButton, IonCard, IonCardTitle, IonContent, IonHeader, IonIcon, 
     IonPage, IonRefresher, IonRefresherContent, 
     IonTitle, IonToolbar, RefresherEventDetail, useIonViewWillEnter 
 } from '@ionic/react';
@@ -9,9 +9,8 @@ import 'swiper/css';
 import 'swiper/css/zoom';
 
 import { AppContext } from '../../contexts/AppContextProvider';
-import { useSocket } from '../../contexts/SocketProvider';
-import { getCurrentVideo, getMySubjects, openRequester, setCurrentVideos, setMicroTransactions, setPaymentConfirmation } from '../../services/State';
-import { appAuthDomain, dateTimeNow, getTimeOfDay, makeRequests, ShowAlertInterface, supportedSubjects, videosSourceDomain } from '../../services/Utils';
+import { getCurrentVideo, getMySubjects, setCurrentVideos } from '../../services/State';
+import { getTimeOfDay, makeRequests, ShowAlertInterface, supportedSubjects, videosSourceDomain } from '../../services/Utils';
 
 import VideosList from '../../components/VideosList';
 import './index.css';
@@ -19,7 +18,6 @@ import { useLocation } from 'react-router';
 
 const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const { state, dispatch } = useContext(AppContext);
-    const socket = useSocket();
 
     const getDateTimeObject = getTimeOfDay(new Date());
     var loaders = [
@@ -40,108 +38,9 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const [isLoading, setIsLoading] = useState(false);
     const [loadedVideos, setLoadedVideos] = useState<any>(loaders);
     const [selectedSubject, setSelectedSubject] = useState<any>("All");
-    const [showLoadingState, setShowLoading] = useState({showLoadingMessage: "Loading ...", showLoading: false, triggered: false});
     const [showAlertState, setShowAlertState] = useState<ShowAlertInterface>({header: "Alert", subHeader: "If this takes too long, just close tha App and start afresh.", message: "", buttons: [], showAlert: false});
 
     const mySubjects = getMySubjects(state);
-    
-    const enterRequestMode = ()=>{
-        if ('isSubscribed' in state.user) {
-            if (state.user.isSubscribed.paid) {
-                dispatch(openRequester());
-            } else {
-                var confirmService = ()=>{
-                    setShowLoading({...showLoadingState, showLoadingMessage: "Sending request...", showLoading: true, triggered: true});
-                    var reqObject = {
-                        method: "POST",
-                        url: appAuthDomain("api/payments?appType=videos&action=addPayments`"),
-                        data: {
-                            ...state.microTransactions,
-                            timeAdded: dateTimeNow()
-                        }
-                    };
-                    var buttonActions = [
-                        {
-                            text: 'Cancel',
-                            role: 'cancel',
-                            cssClass: 'secondary',
-                            handler: ()=>{
-                                dispatch(setMicroTransactions({ ...state.ui.microTransactions, show: false }));
-                            }
-                        },
-                        {
-                            text: 'Retry',
-                            handler: ()=>{
-                                confirmService();
-                            }
-                        }
-                    ];
-                    var alertStateVars = {
-                        header: "Connection issue", 
-                        subHeader: "Real-time engine not working.", 
-                        message: "Your phone is current not connected to the internet.",
-                        inputs: [],
-                        buttons: buttonActions
-                    };
-                    if (socket) {
-                        socket.emit('makeSubscription', {...reqObject.data}, (response: any)=>{
-                            // console.log('makeSubscription response: ', response);
-                            setShowLoading({...showLoadingState, showLoading: false});
-                            if (response.status) {
-                                var returnedData = response.data;
-                                if (reqObject.data.paymentMethod === "card") {
-                                    if ('paymentResponse' in returnedData) {
-                                        dispatch(setPaymentConfirmation(returnedData.paymentResponse));
-                                    } else {
-                                        dispatch(openRequester());
-                                    }
-                                } else {
-                                    dispatch(openRequester());
-                                };
-                            } else if (!response.status) {
-                                buttonActions = [
-                                    {
-                                        text: 'Cancel',
-                                        role: 'cancel',
-                                        cssClass: 'secondary',
-                                        handler: ()=>{
-                                            dispatch(setMicroTransactions({ ...state.ui.microTransactions, show: false }));
-                                        }
-                                    },
-                                    {
-                                        text: 'Retry',
-                                        handler: ()=>{
-                                            confirmService();
-                                        }
-                                    }
-                                ];
-                                alertStateVars = {
-                                    header: response.msg, 
-                                    subHeader: response.msg2, 
-                                    message: response.msg3,
-                                    inputs: [],
-                                    buttons: buttonActions
-                                };
-                                setTimeout(() => {
-                                    setShowAlertState({...alertStateVars, showAlert: true}); 
-                                }, 500);
-                            }
-                        });
-                    } else {
-                        setTimeout(() => {
-                            setShowAlertState({...alertStateVars, showAlert: true}); 
-                        }, 500);
-                    }
-                };
-                var selectedProduct = {product: {name: 'appimateRequest', amount: {currency: "ZAR", value: "5"}}};
-                dispatch(setMicroTransactions({selectedProduct, confirmService}));
-                dispatch(setMicroTransactions({ show: true, presentingElement: routerRef }));
-            }
-        } else {
-            dispatch(openRequester());
-        };
-    }
-
     
     const goToVideos = ()=>{
         var loadedVideosCurrent;
@@ -352,9 +251,6 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                 <br/>
                 <br/>
             </IonContent>
-            <IonFab className='requestBtnFab' >
-                <IonButton mode='ios' className='requestBtn' onClick={enterRequestMode}>Request</IonButton>
-            </IonFab>
             <IonAlert
                 mode='ios'
                 isOpen={showAlertState.showAlert}
