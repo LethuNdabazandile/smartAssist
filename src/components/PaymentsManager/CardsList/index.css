@@ -1,0 +1,7 @@
+.cardName{ font-size: 130%; font-weight: bolder; width: 100%; border-radius: 5px;}
+.flexDiv{margin-top: 0%; height: 40px; margin-bottom: 2.5%; }
+.flexDiv > h2{margin-left: 2.5%; margin-top: 0.3em; float: left; width: 70%; font-size: large; font-weight: 600;} 
+.flexDiv > p{ margin-top: 0.8em;  float: right; margin-right: 2%; width: 21%; text-align-last: right;; font-size: medium; font-weight: 400;}
+.monDate{--display: flex; border: none;}
+
+.mon{display: inline-block; width: 50%;}

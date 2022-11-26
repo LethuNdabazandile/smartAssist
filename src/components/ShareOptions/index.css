@@ -1,0 +1,27 @@
+
+.shareOptsHolder{
+    display: flex;
+    justify-content: center;
+}
+.shareOpts{
+    width: 120px;
+    text-align: center;
+}
+.shareOptsIconHolder{
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    margin-top: 10%;
+    /* border: 1px solid blue; */
+}
+.shareOptsAppimate{
+    width: 70px;
+    /* border: 1px solid red; */
+}
+.shareOptsSocial{
+    font-size: 400%;
+    margin-top: 10%;
+    width: 50px;
+    height: 50px;
+    /* border: 1px solid red; */
+}

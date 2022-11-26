@@ -1,0 +1,12 @@
+{
+  "name": "Appimate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "plugins": {
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  }
+}

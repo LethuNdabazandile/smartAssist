@@ -1,0 +1,218 @@
+
+
+.requestBtnFab{
+    bottom: 7%; 
+    left: 50%;
+    transform: translateX(-50%);
+    /* border: 1px solid red; */
+    min-width: 40%;
+}
+.requestBtn{
+    --border-radius: 25px; 
+    width: 100%;
+}
+.videoPreviewCard{
+    height: 160px;
+    border-radius: 25px;
+}
+
+.homeTopSection{
+    /* border: 1px solid blue; */
+    height: 300px;
+}
+.homeTopSection > .welcomeSection{
+    display: inline-block;
+    /* border: 1px solid red; */
+    width: 97%;
+    /* height: 100%; */
+}
+.homeAvgPerformance{
+    border-radius: 15px;
+    /* border: 1px solid red; */
+    /* margin: auto; */
+    width: 95%;
+    /* margin-top: 1%; */
+    /* margin-bottom: 3%; */
+    border-radius: 20px;
+    position: relative;
+}
+.homeWelcomeText{
+    width: 94%;
+    padding: 3% 3% 3% 7%;
+    font-size: 130%;
+    /* border: 1px solid red; */
+
+}
+.onlineState{
+    width: 10px; height: 10px; 
+    border-radius: 50%; background-color: silver;
+    position: absolute;
+    top: 50%;
+    transform: translate(-130%, -50%);
+    /* right: 5%; */
+}
+.onlineStateConnected{background: lime;}
+.scoreDiv{float: right; display: flex; margin-top: 10%;}
+.scoreIcon{display: inline-Block; margin-top:0%; width: 40px; height: 40px;}
+.scoreText{display: inline-block; margin-top:10%; font-size: 20px; margin-right: 3%;}
+.homeMesgext{margin-left: 5%;}
+
+.quizRelatedInfo{
+    display: inline-block;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+.quizRelatedInfo > div {
+    display: inline-block;
+    width: 50%;
+    /* border: 1px solid lime; */
+
+}
+.quizRelatedInfo > div .homeGridCol2{
+    /* width: 150px; */
+    height: 100%; 
+    padding-bottom: 5%;
+    border-radius: 20px;
+}
+
+.gridIcons{
+    margin-top: 10%; color: goldenrod; 
+    height: 50px; width: 50px; margin-left: 50%; transform: translateX(-50%);
+} 
+.gridTitle{
+    text-align: center; margin-bottom: 0%; margin-top: 7%; 
+    padding-bottom: 2%;
+    font-size: 130%;
+}
+
+.subjectsSliderContainer{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.subjectsSliderContainer > .subjectsSliders{
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 110%;
+    mix-blend-mode: difference;
+    display: inline-block;
+    min-width: 90px;
+}
+.subjectsSliderContainer > .subjectsSliders p{
+    /* border: 1px solid red; */
+    margin-top: 9%;
+    margin-bottom: 9%;
+}
+
+.videoLoadReloadHolder{
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30%;
+}
+
+.videoLoadReload{
+    /* margin: auto; */
+    height: 25px;
+}
+.moreVideosHolder{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.moreVideos{
+    margin: auto;
+    margin-top: 15%;
+    height: 25px;
+    --background: rgba(200, 200, 200, 0.6);
+}
+
+.mathsColor{
+    /* color: cyan; */
+    mix-blend-mode: difference;
+    background: linear-gradient(to top right, navy, silver);
+}
+.physicsColor{
+    background: linear-gradient(to top right, navy, cyan);
+}
+.chemColor{
+    background: linear-gradient(to top right, navy, #ff99cc 100%);
+}
+.bioColor{
+    background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);
+}
+.agricColor{
+    background: linear-gradient(to top right, #46911a 0%, #000000 100%);
+    
+}
+.geoColor{
+    background: linear-gradient(to top right, #33b4ff 0%, #533106 100%);
+    
+}
+.matListColor{
+    background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);
+    
+}
+.accoutingColor{
+    background: linear-gradient(to top right, black, blue);
+}
+.englishColor{
+    background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);
+    
+}
+.economicsColor{
+    background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);
+    
+}
+.bsColor{
+    background: linear-gradient(to top right, #33ccff 0%, #ff99cc 100%);
+    
+}
+
+@media only screen and (min-width: 600px) {
+    .homeTopSection{
+        height: 200px;
+        /* border: 5px solid red; */
+    }
+    .homeTopSection > .welcomeSection{
+        width: 60%;
+        float: left;
+        height: 100%;
+        /* border: 1px solid blue; */
+    }
+    /* .homeAvgPerformance{
+        height: 140px;
+    } */
+
+
+    .quizRelatedInfo{
+        /* border: 1px solid yellow; */
+        width: 40%;
+        height: 100%;
+    }
+    .quizRelatedInfo > div {
+        margin-top: 2%;
+        width: 50%;
+        /* border: 1px solid blue; */
+        height: 75%;
+        /* margin: auto; */
+    
+    }
+
+    /* .subjectsSliderContainer{
+    } */
+    .subjectsSliderContainer > .subjectsSliders{
+        width: 180px;
+        border-radius: 15px;
+    }
+    .moreVideosHolder{
+        width: 10%;
+        margin-top: 5%;
+        margin-right: 10%;
+        /* display: inline-block; */
+        float: right;
+    }
+
+}

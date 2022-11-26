@@ -1,0 +1,75 @@
+.loaderAfterSplashScreen{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: var(--ion-background-color); */
+}
+.loaderAfterSplashScreen > .appLogo{
+    /* border: 1px solid red; */
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+.userAVTR{
+    position: relative;
+    background-color: var(--ion-color-medium-tint);
+    color: white;
+}
+.profileAVTR{
+    /* border: 1px solid red; */
+    position: relative;
+    width: 45px;
+    height: 45px; 
+    margin-right: 5%;
+    background-color: var(--ion-color-medium-tint);
+}
+.profileAVTRNoPic{
+    position: absolute;
+    /* border: 1px solid rgb(77, 255, 0); */
+    width: 100%;
+    height: 100%;
+}
+.profileAVTRNoPic > span{
+    /* border: 1px solid yellow; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.userAVTRNoPic{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.userAVTRNoPic > span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+@media only screen and (min-width: 600px) {
+    ion-tab-bar{
+        position: fixed;
+        z-index: 10;
+        top: 5%;
+        right: 2%;
+        width: 400px;
+        background-color: transparent;
+        border-radius: 25px;
+        /* height: 50px; */
+    }
+    #defaultIonicTabBar{
+        /* position: fixed; */
+        --top: 50%;
+        --right: 50%;
+        /* transform: translate(-50%, 50%); */
+    }
+}

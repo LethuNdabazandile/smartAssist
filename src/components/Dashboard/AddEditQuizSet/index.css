@@ -1,0 +1,8 @@
+.searchedPeople{
+    width: "90%"; margin-left: "5%"; border: "1px solid silver"; border-radius: "25px"; background: "rgba(200,200,200,0.3)"
+}
+.picturesUploadDiv{
+    border: 1px solid silver;
+    margin: 3%;
+    border-radius: 20px;
+}

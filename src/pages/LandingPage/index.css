@@ -1,0 +1,202 @@
+
+
+
+.landingMainHolder{
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 100%;
+    padding-top: 7%;
+    /* display: inline-flex; */
+}
+.landingMainHolder > .companyOverView{
+    /* border: 1px solid lime; */
+    width: 100%;
+    display: inline-block;
+    height: 50%;
+}
+.landingMainHolder > .loginFormHolder{
+    /* border: 1px solid red; */
+    display: inline-block;
+    width: 100%;
+    height: 50%; 
+    margin: auto;
+    background-image: url('https://appimate.com/assets/img/Appimate Platform - Graphic (no background).png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    /* transform: rotateY(180deg); */
+    background-color: transparent;
+    cursor: pointer;
+}
+.landingMainHolder > .companyOverView > .otherPageLink{
+    /* border: 1px solid yellow; */
+    display: flex;
+    justify-content: center; 
+    position: relative; 
+    z-index: 3;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 50%);
+}
+.landingMainHolder >.companyOverView > .otherPageLink > a{
+    text-decoration: none;
+    color: var(--ion-text-color);
+    margin: 0% 2% 0% 2%;
+    text-transform: uppercase;
+    /* border: 1px solid pink; */
+    min-width: 60px;
+    /* min-height: 70px; */
+    cursor: pointer;
+    position: relative;
+    font-weight: bolder;
+    font-size: 90%;
+    text-align: center;
+    /* width: inherit;
+    height: inherit; */
+}
+.landingMainHolder > .companyOverView > .companyContextGraphics{
+    /* border: 1px solid lime; */
+    height: 80%;
+    border-radius: 25px;
+    /* z-index: 0; */
+    position: relative;
+}
+.landingMainHolder > .companyOverView > .companyContextGraphics > .companyContextTextGroups{
+    /* border: 1px solid purple; */
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+.landingMainHolder > .companyOverView > .companyContextGraphics > .companyContextTextGroups > p{
+    font-size: 150%;
+    font-weight: bolder;
+}
+.landingMainHolder > .loginFormHolder > .formsContainer{
+    width: 60%;
+    height: 90%;
+    margin: 10% 0% 0% 35%;
+}
+.highlightLearningPlatform {
+    /* border: 1px solid yellow; */
+    position: absolute;
+    z-index: 2;
+    top: 125%;
+    left: 5%;
+    width: 170px;
+}
+.highlightLearningPlatform > .theAppimateAppIcon{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background: linear-gradient(to top, rgb(245,245,245), rgb(254,254,254));
+    /* box-shadow: 0px 1px 0px rgb(205,205,210), -1px 2px 1px rgba(205,205,210,0.95), -2px 4px 1px rgba(205,205,210, 0.9),
+    -3px 6px 1px rgba(205,205,210,0.5), -4px 8px 1px rgba(205,205,210,0.35), -5px 10px 1px rgba(205,205,210,0.25),
+    -6px 12px 1px rgba(205,205,210,0.2),-7px 14px 1px rgba(205,205,210,0.15),-8px 16px 1px rgba(205,205,210,0.11),
+    -9px 18px 1px rgba(205,205,210,0.1),-10px 20px 1px rgba(205,205,210,0.09),-11px 22px 1px rgba(205,205,210,0.08),
+    -12px 24px 1px rgba(205,205,210,0.06),-13px 26px 1px rgba(205,205,210,0.05),-14px 28px 1px rgba(205,205,210,0.04); */
+}
+.highlightLearningPlatform > .theAppimateAppDirect{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 25px;
+    background-color: rgba(127, 127, 127, 0.3);
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.highlightLearningPlatform > .theAppimateAppDirect > p{
+    margin: auto;
+    font-size: 70%;
+}
+.landingMainHolder > .companyOverView > .appimateProducts{
+    display: none;
+}
+
+@media only screen and (min-width: 600px) {
+    .landingMainHolder{
+        width: 100%;
+        height: 100%;
+        display: inline-flex;
+    }
+    .landingMainHolder > .companyOverView{
+        display: inline-block;
+        width: 70%;
+        height: 100%;
+        position: relative;
+        visibility: visible;
+    }
+    .landingMainHolder > .loginFormHolder{
+        display: inline-block;
+        width: 30%;
+        height: 100%; margin: auto;
+    }
+    .landingMainHolder > .loginFormHolder > .formsContainer{
+        /* width: 96%; */
+        width: 300px;
+        height: 96%;
+        margin: 2%;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        box-shadow: 5px 5px 25px rgba(127, 127, 127, 0.3);
+    }
+
+    .landingMainHolder > .companyOverView > .otherPageLink{
+        display: flex;
+        justify-content: center;
+    }
+    .landingMainHolder > .companyOverView > .otherPageLink > a{
+        color: var(--ion-text-color);
+        margin: 0% 1% 0% 1%;
+        text-transform: uppercase;
+        /* visibility: hidden; */
+    }
+    .landingMainHolder > .companyOverView > .companyContextGraphics{
+        /* border: 1px solid lime; */
+        height: 80%;
+        border-radius: 25px;
+        position: relative;
+    }
+    /* .landingMainHolder > .companyOverView > .companyContextGraphics > .companyContextTextGroups{
+        border: 1px solid lime;
+    } */
+    .highlightLearningPlatform {
+        left: unset;
+        top: 50%;
+        right: 5%;
+        width: 250px;
+    }
+    .highlightLearningPlatform > .theAppimateAppIcon{
+        float: left;
+        width: 90px;
+        height: 90px;
+        border-radius: 25px;
+    }
+    .highlightLearningPlatform > .theAppimateAppDirect{
+        right: 0%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+    .landingMainHolder > .companyOverView > .appimateProducts{
+        position: absolute;
+        bottom: 0%;
+        /* border: 1px solid red; */
+        visibility: hidden;
+    }
+    .appsList{
+        display: flex;
+    }
+    .theApps{
+        width: 70px;
+        height: 70px;
+        border-radius: 15px;
+    }
+}

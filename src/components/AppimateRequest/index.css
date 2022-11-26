@@ -1,0 +1,47 @@
+
+.requestCenterSectionVisuals{
+    height: 75%;
+    visibility: hidden;
+}
+.requestCenterSectionInputs{
+    display: flex;
+    width: 95%;
+    margin-left: 2.5%;
+}
+.requestCenterCamera{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    /* background-color: var(--ion-color-primary);
+    color: white; */
+}
+.requestCenterCameraIcon{
+    margin: auto;
+    font-size: 180%;
+}
+.requestCenterInput{
+    width: 80%;
+}
+.requestCenterInputField{
+    border: 1px solid var(--ion-color-primary-tint);
+    border-radius: 25px;
+    width: 90%;
+    margin-left: 5%;
+    
+}
+.requestCenterSend{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    /* background-color: var(--ion-color-primary);
+    color: white; */
+}
+.requestCenterSendIcon{
+    margin: auto;
+    font-size: 180%;
+}
+.closeRequestCenter{
+    margin-top: 5%;
+    text-align: center;
+    color: silver;
+}

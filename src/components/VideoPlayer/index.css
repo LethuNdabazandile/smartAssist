@@ -1,0 +1,51 @@
+.myVideoPlayer{
+    width: 100%;
+}
+
+.videoActionsHolder{
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+}
+.videoActionsHolder .videoActions{
+    --border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    transform: scale(0.7);
+}
+.nextVideosSlider{
+    min-height: 50px;
+    /* border: 1px solid red; */
+    /* position: absolute; */
+    /* bottom: 2opx; */
+}
+.nextVideos{
+    width: 140px;
+    height: 70px;
+    border-radius: 15px;
+}
+.nextVideosTitle{
+    margin: 5% 0% 0% 4%;
+}
+.videoActionsIcons{
+    font-size: 150%;
+}
+.closePlayer{
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.closePlayerIcon{
+    font-size: 290%;
+    opacity: 0.2;
+    cursor: pointer;
+}
+.downloadVideo{
+    margin: 5%;
+}
+.downloadVideo .downloadVideoNumnbers{
+    /* border: 1px solid red; */
+    text-align: center;
+}

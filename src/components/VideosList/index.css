@@ -1,0 +1,49 @@
+.videoPreviewCard{
+    position: relative;
+    padding: 0%;
+    /* border: 1px solid red; */
+    display: inline-block;
+    width: 96%;
+    height: 160%;
+    margin: 2%;
+}
+.vidThumb{
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 0%;
+    /* border: 1px solid red; */
+}
+.vidSize{
+    margin: 0%;
+    min-width: 40px;
+    height: 20px;
+    position: absolute;
+    bottom: 20%; 
+    right: 2%;
+    border-radius: 20px;
+    padding: 1px 3px 1px 3px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.vidTime{
+    border-radius: 20px;
+    margin: 0%;
+    min-width: 40px;
+    height: 20px;
+    position: absolute;
+    bottom: 5%; 
+    right: 3%;
+    padding: 1px 3px 1px 3px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (min-width: 600px) {
+    .videoPreviewCard{
+        /* border: 1px solid red; */
+        position: relative;
+        padding: 0%;
+        width: 300px;
+        height: 160px;
+    }
+}

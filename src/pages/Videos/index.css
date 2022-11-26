@@ -1,0 +1,9 @@
+
+.subjectsSliders{
+    border-radius: 15px;
+    text-align: center;
+    margin-right: 1%;
+}
+.selectedSubject{
+    transform: scale(1.2);
+}

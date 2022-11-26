@@ -1,0 +1,98 @@
+
+.theSwiper{
+    width: 100%;
+    height: 100%;
+
+}
+.eachSlide{
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid blue; */
+}
+.sliderCard{
+    width: 92%;
+    height: 92%;
+    /* border: 1px solid lime; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sliderCard > .slideCardDiv{
+    /* border: 1px solid red; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sliderCard > .slideCardDivSubjects{
+    height: auto;
+    width: auto;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+}
+.sliderCard > .slideCardNext{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid blue; */
+}
+
+.welcomeSlideBtns{
+    border-radius: 25px;
+}
+.welcomeSlidePrev{
+    position: absolute;
+    left: 5%
+}
+.welcomeSlideNext{
+    position: absolute;
+    right: 5%;
+}
+.welcomeChoices{
+    margin: auto;
+    margin-bottom: 2%;
+    border-radius: 25px;
+    background-color: var(--ion-color-step-500);
+    color: var(--ion-color-step-150);
+    width: 70%;
+    height: 50px;
+    padding: 5% 5% 5% 10%;
+    display: flex;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.welcomeChoiceSubjects{
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    margin: 1%;
+    display: inline-block;
+    background-color: var(--ion-item-background);
+    position: relative;
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.welcomeChoiceSubjects > p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0%;
+    transform: translate(-50%, -50%);
+    background-color: var(--ion-card-background);
+    border-radius: 25px;
+    padding: 3px;
+}
+
+.welcomeChoicesSelected{
+    background-color: var(--ion-color-primary-tint);
+    box-shadow: 0px 0px 15px var(--ion-color-primary-tint);
+    transform: scale(1.05);
+}
+.selectedClassLevel{
+    background-color: var(--ion-color-primary-tint);
+    box-shadow: 0px 0px 15px var(--ion-color-primary-tint);
+    transform: scale(1.05);
+}
+.selectedSubject{
+    background-color: var(--ion-color-primary-tint);
+    transform: scale(1.05);
+}

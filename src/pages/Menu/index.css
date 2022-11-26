@@ -1,0 +1,45 @@
+.myLabels{font-weight: bold; margin-left: 2%;}
+.cardContent{width: 100%; padding: 1%; border-radius: 10px; overflow: hidden; }
+.cardContent .cardContentList{width: 100%; border-radius: 10px; overflow: hidden; }
+
+.component-icon {
+    border-radius: 50%;
+
+    padding: 7px;
+    height: 18px;
+    width: 18px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: var(--ion-background-color);
+    background-color: var(--ion-text-color);
+}
+.component-icon-dark {
+    background: var(--ion-color-step-850, #27323e);
+    color: var(--ion-item-background, #fff);
+}
+.menuProfileSetupBadge{
+    float: right;
+}
+.menuProfile{
+    display: flex;
+}
+.menuProfile .profileAVTR {
+    margin-left: 5%;
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+}
+.menuProfile .profileHintsPart{
+    width: 70%;
+    display: inline-block;
+}
+.menuProfile .menuProfileNames{
+    font-size: 130%;
+}
+.menuProfile .chevronPart{
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    width: 4%;
+}

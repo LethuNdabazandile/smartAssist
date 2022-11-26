@@ -1,0 +1,19 @@
+
+.chatListItem{
+    margin-top: 15px;
+    /* border: 1px solid red; */
+}
+.approvedAccount{
+    /* border: 1px solid red; */
+    position: absolute;
+    transform: translate(0%, -3%);
+    font-size: 150%;
+}
+
+.searchUserParagraph{
+    text-align: center;
+}
+.searchUserParagraph > span{
+    font-style: italic;
+    font-weight: bolder;
+}

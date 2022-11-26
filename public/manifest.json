@@ -1,0 +1,117 @@
+{
+	"short_name": "Appimate",
+	"name": "Appimate",
+	"description": "Request, Watch and Download Personalized educational videos.",
+	"icons": [
+		{
+			"src": "assets/icon/ICON 48x48.png",
+			"type": "image/png",
+			"sizes": "48x48"
+		},{
+			"src": "assets/icon/ICON 57x57.png",
+			"type": "image/png",
+			"sizes": "57x57"
+		},{
+			"src": "assets/icon/ICON 96x96.png",
+			"type": "image/png",
+			"sizes": "96x96"
+		},{
+			"src": "assets/icon/ICON 144x144.png",
+			"type": "image/png",
+			"sizes": "144x144"
+		},{
+			"src": "assets/icon/ICON 152x152.png",
+			"type": "image/png",
+			"sizes": "152x152"
+		},{
+			"src": "assets/icon/ICON 167x167.png",
+			"type": "image/png",
+			"sizes": "167x167"
+		},{
+			"src": "assets/icon/ICON 180x180.png",
+			"type": "image/png",
+			"sizes": "180x180"
+		},{
+			"src": "assets/icon/ICON 192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},{
+			"src": "assets/icon/ICON 196x196.png",
+			"type": "image/png",
+			"sizes": "196x196"
+		},{
+			"src": "assets/icon/ICON 512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},{
+			"src": "assets/icon/ICON 512x512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
+		}
+	],
+	"start_url": "./home",
+	"background_color": "#FFFFFF",
+	"theme_color": "#00FFFF",
+	"display": "standalone",
+	"related_applications":[
+		{
+			"platform": "play",
+			"url": "https://play.google.com/store/apps/details?id=com.appimate.appimate"
+		},
+		{
+		  "platform": "itunes",
+		  "url": "https://apps.apple.com/apps/details?id=com.appimate.appimate"
+		}
+	],
+	"serviceworker": {"src":"service-worker.js","scope":"/"},
+	"share_target":{
+		"action": "/?page=chat&sharing=1",
+		"method": "POST",
+		"enctype": "multipart/form-data",
+		"params": {
+			"title": "title",
+			"text": "text",
+			"url": "url",
+			"files": [{
+				"name": "file",
+				"accept": ["*/*"]
+			}]
+		}
+	},
+	"file_handlers": [
+		{
+			"action": "/play",
+			"accept": {
+				"video/mp4": [".mp4"]
+			}
+		}
+	],
+	"shortcuts": [
+		{
+			"name": "Direct Message",
+			"short_name": "DM",
+			"description": "Quickly send direct messages.",
+			"url": "./chat",
+			"icons": [
+				{
+					"src": "public/icons/shortcut-chat.png",
+					"size": "96x96",
+					"type": "image/png"
+				}
+			]
+		},{
+			"name": "Notifications",
+			"short_name": "Notifications",
+			"description": "Quickly check your Notifications.",
+			"url": "./notifications",
+			"icons": [
+				{
+					"src": "public/icons/shortcut-notify.png",
+					"size": "96x96",
+					"type": "image/png"
+				}
+			]
+		}
+	]
+}

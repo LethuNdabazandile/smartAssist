@@ -1,0 +1,68 @@
+.quizAvgPerformance{
+    border-radius: 20px;
+    /* display: inline-block; */
+    /* width: 200px; */
+}
+.firstRect{
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 96%;
+    height: 100%;
+    /* border: 1px solid lime; */
+
+}
+.rectParts{
+    width: 100%;
+    /* border: 1px solid lime; */
+    display: flex;
+}
+.rectParts > .partIcons{
+    width: 30%;
+    /* border: 1px solid lime; */
+}
+.rectParts > .partIcons > .partIcon{
+    width: 100%;
+    font-size: 300%;
+    color: goldenrod;
+}
+.rectParts > .partIcons > .avgPer{
+    color: greenyellow;
+}
+
+.rectParts > .textPart{
+    width: 70%;
+    /* border: 1px solid blue; */
+}
+.rectParts > .textPart > p{
+    font-size: 120%;
+    margin: 0%;
+}
+.rectParts > .textPart > p > span{
+    font-weight: bolder;
+    font-size: 170%;
+}
+
+
+.quizSubjectList{
+    display: inline-block;
+}
+
+.quizSubject{
+    border-radius: 17px;
+    width: 90px;
+    height: 90px;
+    display: inline-block;
+    color: white;
+    mix-blend-mode: difference;
+}
+.quizSubjectIcons{
+    margin-top: 10%; 
+    /* color: goldenrod;  */
+    height: 50px; width: 50px; margin-left: 50%; 
+    transform: translateX(-50%);
+}
+.quizSubject .gridTitle{
+    font-size: 90%;
+}
