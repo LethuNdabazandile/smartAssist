@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 
-import { IonAlert, IonButton, IonButtons, IonCard, IonContent, IonHeader, IonIcon, 
+import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonContent, IonHeader, IonIcon, 
     IonImg, 
     IonItem, 
     IonLabel, 
@@ -398,6 +398,7 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">
+                    <p style={{textAlign: "center"}}>We will use the your information to predict on which career to path to take</p>
                     <form onSubmit={(evt)=>{submitFunction(evt, null)}}>
                     <IonItem className="myFormInputs">
                         <IonLabel position="floating" >Your age</IonLabel>
@@ -476,9 +477,27 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                     </form>
                     {
                         (careerMSG !=="")?(
+                        <>
                         <IonCard>
                             <p style={{color: myColor}}>{careerMSG}</p>
                         </IonCard>
+                        <h3 style={{textAlign:"center"}}>In demand jobs</h3>
+                        <IonCard>
+                            <IonCardHeader>
+                                <IonCardSubtitle>Data Scientists</IonCardSubtitle>                            
+                            </IonCardHeader>
+                        </IonCard>
+                        <IonCard>
+                            <IonCardHeader>
+                                <IonCardSubtitle>Software developers</IonCardSubtitle>                            
+                            </IonCardHeader>
+                        </IonCard>
+                        <IonCard>
+                            <IonCardHeader>
+                                <IonCardSubtitle>Data engeneeres</IonCardSubtitle>                            
+                            </IonCardHeader>
+                        </IonCard>
+                        </>
                         ):("")
                     }
                     
