@@ -30,11 +30,11 @@ const Chats:React.FC<any> = ({routerRef})=>{
     const ionListRef:any = useRef();
     const [courseSets, setCourseSets] = useState([
         {courseName: "Data Science", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
-        universities: ["NMMU", "WITS", "UWC"]},
+        universities: ["NEMISA (for a Self-paced Short Course)", "NMMU", "WITS", "UWC"]},
         {courseName: "Data Engeneering", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
-        universities: ["NMMU", "UFH", "WSU", "CPUT"]},
+        universities: ["NEMISA (for a Self-paced Short Course)", "NMMU", "UFH", "WSU", "CPUT"]},
         {courseName: "Computer Science", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
-        universities: ["NMMU", "UFH", "WSU", "CPUT"]}
+        universities: ["NEMISA (for a Self-paced Short Course)", "NMMU", "UFH", "WSU", "CPUT"]}
     ]);
     const selectCourse = (course: any,)=>{
        console.log(course)

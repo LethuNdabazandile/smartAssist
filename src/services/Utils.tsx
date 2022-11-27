@@ -32,8 +32,8 @@ export const dayNameList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
 export const daySimpleNameList = ['Yesterday', 'Today', 'Tomorrow'];
 export const timeSimpleNameList = ['morning', 'day', 'afternoon', 'evening'];
 export const supportedSubjects:any = {
-    Maths: {name: "Maths", code: "Math", icon: calculator, classLevel: ['Gr8','Gr9','Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "mathsColor"},
-    Physics: {name: "Physics", code: "Phys", icon: planet, classLevel: ['Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "physicsColor"},
+    Maths: {name: "Maths", code: "Math", icon: calculator, classLevel: ['Gr8','Gr9','Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "bioColor"},
+    Physics: {name: "Physics", code: "Phys", icon: planet, classLevel: ['Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "chemColor"},
     Chemistry: {name: "Chemistry", code: "Chem", icon: flask, classLevel: ['Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "chemColor"},
     Biology: {name: "Life Science", code: "LifeSci", icon: heart, classLevel: ['Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "bioColor"},
     Agriculture: {name: "Agriculture", code: "Agric", icon: leaf, classLevel: ['Gr10','Gr11','Gr12','Yr1','Yr2'], colorClass: "agricColor"},

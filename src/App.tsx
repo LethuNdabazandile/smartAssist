@@ -221,7 +221,7 @@ const App: React.FC = () => {
         (!state.initialAuth)?(
           <div className='loaderAfterSplashScreen'>
             <div className='appLogo'>
-              <img decoding="async" loading="lazy" src="/assets/icon/ICON 512x512_tp_tiny.png" alt='AppLogo'/>
+              <img decoding="async" loading="lazy" src="/assets/icon/GOLD-6487-CareerGuide-Batch04-Images-GraphCharts-09-Gantt.png" alt='AppLogo'/>
             </div>
           </div>
         ):(
