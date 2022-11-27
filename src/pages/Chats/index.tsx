@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 
 import { IonAvatar, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonContent, IonFab, IonFabButton, IonHeader, 
     IonIcon, IonInput, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonModal, IonPage, 
-    IonSearchbar, IonTitle, IonToolbar, 
+    IonSearchbar, IonSegment, IonSegmentButton, IonTitle, IonToolbar, 
     useIonActionSheet, 
     // useIonToast 
 } from '@ionic/react';
@@ -20,6 +20,7 @@ const Chats:React.FC<any> = ({routerRef})=>{
     const {conversations, createConversation, selectConversationIndex, clearConvo, deleteConvo} = useConversations();
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef<any>(null);
+    const [segment, setSegment] = useState("course");
 
     const convoSearchRef = useRef<any>(null);
     const [present, dismiss] = useIonActionSheet();
@@ -36,6 +37,15 @@ const Chats:React.FC<any> = ({routerRef})=>{
         {courseName: "Computer Science", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
         universities: ["NEMISA (for a Self-paced Short Course)", "NMMU", "UFH", "WSU", "CPUT"]}
     ]);
+
+    const [bursariesSets, setBursariesSets] = useState([
+        {courseName: "DHET", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
+        universities: ["IT", "Computer science", "Data Science"]},
+        {courseName: "AngloAmerican", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
+        universities: ["Information systems", "Accounting", "Engeneering",]},
+        {courseName: "SITA", description: "In simple terms, a data scientist s job is to analyze data for actionable insights. Specific tasks include: Identifying the data-analytics problems that offer the greatest opportunities to the organization. Determining the correct data sets and variables.",
+        universities: ["IT"]}
+    ]);
     const selectCourse = (course: any,)=>{
        console.log(course)
        setShowModal({show: true, title: course.courseName, header: course.description, data: course.universities});
@@ -46,37 +56,70 @@ const Chats:React.FC<any> = ({routerRef})=>{
 
     }
 
+    const onSegment = (seg: any)=>{
+        setSegment(seg);
+        // pushData(()=>{}, segment);
+    };
+
     return (
         <IonPage>
             <IonHeader mode="ios">
                 <IonToolbar>
-                    <IonTitle>Courses</IonTitle>
+                    <IonTitle>Applications</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader mode="ios" collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Courses</IonTitle>
+                        <IonTitle size="large">Applications</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonSearchbar mode='ios' ref={convoSearchRef} animated showCancelButton='focus'/>
+                <IonSegment mode='ios' value={segment} onIonChange={e => onSegment(e.detail.value!)} >
+                    <IonSegmentButton value="course">
+                        <IonLabel>Courses</IonLabel>
+                    </IonSegmentButton>
+                    <IonSegmentButton value="bursary">
+                        <IonLabel>Bursaries</IonLabel>
+                    </IonSegmentButton>
+                </IonSegment>
+                        
                 <IonList mode="ios" ref={ionListRef}>
                     {
-                        (courseSets.length > 0)?(
-                            courseSets.map((theData: any, key: number) => (
-                            <IonCard key={key} onClick={()=>selectCourse(theData)}>
-                                <IonCardHeader>
-                                    <IonCardSubtitle>{theData.courseName}</IonCardSubtitle>                            
-                                </IonCardHeader>
-                                <IonCardContent>
-                                    {theData.description.substring(0, 155)}...
-                                </IonCardContent>
-                            </IonCard>
-                            ))
-                        
+                        (segment === "course")?(
+                            (courseSets.length > 0)?(
+                                courseSets.map((theData: any, key: number) => (
+                                <IonCard key={key} onClick={()=>selectCourse(theData)}>
+                                    <IonCardHeader>
+                                        <IonCardSubtitle>{theData.courseName}</IonCardSubtitle>                            
+                                    </IonCardHeader>
+                                    <IonCardContent>
+                                        {theData.description.substring(0, 155)}...
+                                    </IonCardContent>
+                                </IonCard>
+                                ))
+                            
+                            ):(
+                                ""
+                            )
                         ):(
-                            ""
+                            (bursariesSets.length > 0)?(
+                                bursariesSets.map((theData: any, key: number) => (
+                                <IonCard key={key} onClick={()=>selectCourse(theData)}>
+                                    <IonCardHeader>
+                                        <IonCardSubtitle>{theData.courseName}</IonCardSubtitle>                            
+                                    </IonCardHeader>
+                                    <IonCardContent>
+                                        {theData.description.substring(0, 155)}...
+                                    </IonCardContent>
+                                </IonCard>
+                                ))
+                            
+                            ):(
+                                ""
+                            )
                         )
+                        
                     }
                     
                 </IonList>
@@ -95,7 +138,13 @@ const Chats:React.FC<any> = ({routerRef})=>{
                 isOpen={showModal.show}>
                 <IonHeader>
                     <IonToolbar>
-                        <IonTitle>Course details</IonTitle>
+                        {
+                        (segment === "course")?(
+                            <IonTitle>Course details</IonTitle>
+                        ):(
+                            <IonTitle>Bursary details</IonTitle>
+                        )
+                        }
                         <IonButtons slot="end">
                             <IonButton onClick={() => setShowModal({show: false, title: "", header: "", data: []})}>Close</IonButton>
                         </IonButtons>
@@ -105,7 +154,13 @@ const Chats:React.FC<any> = ({routerRef})=>{
                     <h1>{showModal.title}</h1>
                     <p>{showModal.header}</p>
                     <br/>
-                    <p><b>Institutions :</b></p>
+                    {
+                        (segment === "course")?(
+                            <p><b>Institutions :</b></p>
+                        ):(
+                            <p><b>Courses :</b></p>
+                        )
+                    }
                     {
                     showModal.data.map((name: any, key: number) => (
                         <p key={key}>- {name}</p>
