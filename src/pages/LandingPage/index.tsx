@@ -24,34 +24,41 @@ const LandingPage:React.FC = ()=>{
         <IonPage>
             <div className="landingMainHolder">
                 <div className="companyOverView">
-                    <div className="otherPageLink">
+                    {/* <div className="otherPageLink">
                         <a href={appAuthDomain("about.html")}>About us</a>
                         <a href={appAuthDomain("help.html")}>Help</a>
                         <a href={appAuthDomain("terms.html")}>Terms</a>
-                    </div>
+                    </div> */}
                     <div className="companyContextGraphics">
+                        <h1 style={{textAlign: "center"}}><b>Smart Assist</b></h1>
                         <div className="companyContextTextGroups">
-                            <h1>Extend</h1>
-                            <h1>your</h1>
-                            <h1>experiences.</h1>
+                            <h1>Do things</h1>
+                            <h1>the</h1>
+                            <h1>Smart way.</h1>
                         </div>
                         <div className="highlightLearningPlatform">
-                            <IonCard className="theAppimateAppIcon" routerLink='/home'>
+                            <div className='loggers' onClick={moveToPage}>
+                                <h4 >Student</h4>
+                            </div>
+                            <div className='loggers' onClick={()=>history.push('/dashboard')}>
+                                <h4>Partner</h4>
+                            </div>
+                            {/* <IonCard className="theAppimateAppIcon" routerLink='/home'>
                                 <img decoding="async" loading="lazy" src="/assets/icon/ICON 512x512_tp.png" alt="App Icon"/>
                             </IonCard>
                             <div className="theAppimateAppDirect" onClick={moveToPage} >
-                                <p>Appimate</p>
+                                <p>Smart assist</p>
                                 <IonIcon icon={arrowForward} />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="appimateProducts" >
-                        <IonTitle>Powered by: Appimate</IonTitle>
+                        {/* <IonTitle>Powered by: Smart assist</IonTitle>
                         <div className="appsList">
                             <IonCard className="theApps"></IonCard>
                             <IonCard className="theApps"></IonCard>
                             <IonCard className="theApps"></IonCard>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 {/* <div className="loginFormHolder" > */}
