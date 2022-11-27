@@ -242,7 +242,7 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
     const slideOpts = {
         initialSlide: 0,
         // speed: 0.2,
-        speed: 400, slidesPerView: 1.1, autoplay: {delay: 2500}
+        speed: 400, slidesPerView: 1, autoplay: {delay: 2500}
     };
     const chooseVehicleDriver = (val: any)=>{
         // console.log(val);
@@ -279,7 +279,6 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
         }, 500);
     }
 
-    console.log(state.user.homeData.statsUpdate)
     return (
         <IonPage>
             <IonHeader mode='ios'>

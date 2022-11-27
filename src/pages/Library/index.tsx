@@ -172,10 +172,10 @@ const Library:React.FC<any> = ({doPlay})=>{
                         <IonTitle size="large">Data Driven Insights</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <div>
+                {/* <div>
                     <IonSearchbar mode='ios' onIonChange={(e)=>{searchFunc(e.detail.value!)}} onIonFocus={()=>setSearchFocused(true)} onIonBlur={()=>setSearchFocused(false)} animated showCancelButton='focus'/>
                 </div>
-                <br/>
+                <br/> */}
                 <br/>
                 {
                     (!searchFocused && (searchText.length < 1))?(
