@@ -399,6 +399,7 @@ const Home:React.FC<any> = ({routerRef, doPlay})=>{
                     </IonToolbar>
                 </IonHeader>
                 <IonContent className="ion-padding">
+                    <p style={{textAlign: "center"}}>We will use the your information to predict on which career to path to take</p>
                     <form onSubmit={(evt)=>{submitFunction(evt, null)}}>
                     <IonItem className="myFormInputs">
                         <IonLabel position="floating" >Your age</IonLabel>
